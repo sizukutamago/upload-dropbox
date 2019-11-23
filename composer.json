@@ -1,0 +1,11 @@
+{
+    "name": "sizukutamago/upload-dropbox",
+    "type": "project",
+    "authors": [
+        {
+            "name": "sizukutamago",
+            "email": "tanaka@tam-bourine.co.jp"
+        }
+    ],
+    "require": {}
+}
