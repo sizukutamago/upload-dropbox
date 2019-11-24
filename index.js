@@ -1,5 +1,3 @@
-const downloadLink = document.getElementById("download");
-
 let audio_sample_rate = null;
 let scriptProcessor = null;
 let audioContext = null;

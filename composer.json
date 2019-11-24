@@ -7,5 +7,7 @@
             "email": "tanaka@tam-bourine.co.jp"
         }
     ],
-    "require": {}
+    "require": {
+        "vlucas/phpdotenv": "^3.6"
+    }
 }

@@ -1,5 +1,7 @@
 <?php
 
+require './vendor/autoload.php';
+
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     header('location: /index.html');
     return;
@@ -26,8 +28,11 @@ $dropboxParameters = [
     'strict_conflict' => false
 ];
 
+$dotenv = Dotenv\Dotenv::create(__DIR__);
+$dotenv->load();
+
 $header = [
-    'Authorization: Bearer ' . '',
+    'Authorization: Bearer ' . getenv('DROPBOX_KEY'),
     'Dropbox-API-Arg: ' . json_encode($dropboxParameters),
     'Content-Type: application/octet-stream',
 ];
