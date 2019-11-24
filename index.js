@@ -7,18 +7,17 @@ let audioContext = null;
 let audioData = [];
 let bufferSize = 1024;
 
-let uploadAudio = function () {
-    fetch(exportWAV(audioData)).then(r => {
+let uploadAudio = function() {
+  fetch(exportWAV(audioData)).then(r => {
+    r.blob().then(blob => {
+      const xhr = new XMLHttpRequest();
+      const formData = new FormData();
+      formData.append("audio", blob, "input.wav");
 
-        r.blob().then(blob => {
-            const xhr = new XMLHttpRequest();
-            const formData = new FormData();
-            formData.append('audio', blob, 'input.wav');
-
-            xhr.open('POST', '/upload.php', true);
-            xhr.send(formData);
-        });
+      xhr.open("POST", "/upload.php", true);
+      xhr.send(formData);
     });
+  });
 };
 
 let exportWAV = function(audioData) {
