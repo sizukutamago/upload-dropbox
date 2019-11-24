@@ -29,7 +29,7 @@ $dropboxParameters = [
 ];
 
 $dotenv = Dotenv\Dotenv::create(__DIR__);
-$dotenv->load();
+$dotenv->safeLoad();
 
 $header = [
     'Authorization: Bearer ' . getenv('DROPBOX_KEY'),
