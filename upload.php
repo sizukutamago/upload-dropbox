@@ -5,4 +5,9 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     return;
 }
 
-var_dump($_FILES);
+$file = $_FILES['audio'];
+
+move_uploaded_file(
+    $file['tmp_name'],
+    './uploads/test.wav'
+);
