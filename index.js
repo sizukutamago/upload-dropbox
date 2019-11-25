@@ -6,16 +6,12 @@ let audioData = [];
 let bufferSize = 1024;
 
 let uploadAudio = function() {
-  fetch(exportWAV(audioData)).then(r => {
-    r.blob().then(blob => {
       const xhr = new XMLHttpRequest();
       const formData = new FormData();
-      formData.append("audio", blob, "input.wav");
+      formData.append("audio", exportWAV(audioData), "input.wav");
 
       xhr.open("POST", "/upload.php", true);
       xhr.send(formData);
-    });
-  });
 };
 
 let exportWAV = function(audioData) {
@@ -71,11 +67,7 @@ let exportWAV = function(audioData) {
   };
 
   let dataview = encodeWAV(mergeBuffers(audioData), audio_sample_rate);
-  let audioBlob = new Blob([dataview], { type: "audio/wav" });
-
-  let myURL = window.URL || window.webkitURL;
-  let url = myURL.createObjectURL(audioBlob);
-  return url;
+  return new Blob([dataview], { type: "audio/wav" });
 };
 
 var onAudioProcess = function(e) {
